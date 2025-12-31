@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.interview.ai_interview.Model.Interview;
 import com.interview.ai_interview.Service.GeminiService;
 import com.interview.ai_interview.Service.InterviewService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -13,6 +14,8 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@AllArgsConstructor
+
 @Component
 public class InterviewWebSocketHandler extends TextWebSocketHandler {
 
@@ -20,11 +23,6 @@ public class InterviewWebSocketHandler extends TextWebSocketHandler {
     private final GeminiService geminiService;
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final Map<String, WebSocketSession> sessions = new ConcurrentHashMap<>();
-
-    public InterviewWebSocketHandler(InterviewService interviewService, GeminiService geminiService) {
-        this.interviewService = interviewService;
-        this.geminiService = geminiService;
-    }
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
