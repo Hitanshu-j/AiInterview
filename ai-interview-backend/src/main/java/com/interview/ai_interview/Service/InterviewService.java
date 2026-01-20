@@ -3,18 +3,21 @@ package com.interview.ai_interview.Service;
 import com.interview.ai_interview.Model.ChatMessage;
 import com.interview.ai_interview.Model.Interview;
 import com.interview.ai_interview.Repository.InterviewRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
-@AllArgsConstructor
 
 @Service
 public class InterviewService {
 
     private final InterviewRepository interviewRepository;
     private final GeminiService geminiService;
+
+    public InterviewService(InterviewRepository interviewRepository, GeminiService geminiService) {
+        this.interviewRepository = interviewRepository;
+        this.geminiService = geminiService;
+    }
 
     public Interview startInterview(String userId, String position, String experience, String difficulty) {
         Interview interview = new Interview();

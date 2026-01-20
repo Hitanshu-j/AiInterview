@@ -61,7 +61,7 @@ public class GeminiService {
             return "Hello! Welcome to your interview. Could you introduce yourself?";
 
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return "Hello! I'm your AI interviewer. Let's begin - tell me about yourself.";
         }
     }

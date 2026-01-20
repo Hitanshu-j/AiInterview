@@ -2,14 +2,13 @@ package com.interview.ai_interview.Controller;
 
 import com.interview.ai_interview.Model.User;
 import com.interview.ai_interview.Repository.UserRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-
-@AllArgsConstructor
 
 @RestController
 @RequestMapping("/api/auth")
@@ -17,6 +16,10 @@ import java.util.Map;
 public class AuthController {
 
     private final UserRepository userRepository;
+
+    public AuthController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody User user) {
